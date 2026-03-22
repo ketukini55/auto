@@ -121,6 +121,9 @@ button { font-family: inherit; cursor: pointer; border: none; }
   width: 22px; height: 2px; background: var(--text); border-radius: 2px;
   transition: all var(--transition);
 }
+.nav-hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-hamburger.active span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.nav-hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
 /* ---------- Mobile Nav ---------- */
 .nav-mobile-menu {
