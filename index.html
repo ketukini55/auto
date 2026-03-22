@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Boo – Find your match based on personality. Connect with people who truly get you through deep compatibility powered by personality science." />
+  <meta property="og:title" content="Boo — Match" />
+  <meta property="og:description" content="Find your perfect match based on who you really are." />
+  <meta property="og:image" content="assets/images/og-image.png" />
+  <title>Boo — Match</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet" />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/components.css" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%237B5CFA'/><text y='24' x='4' font-size='22'>👻</text></svg>" />
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════
+     PAGE LOADER
+════════════════════════════════════════════════ -->
+<div class="page-loader" id="page-loader">
+  <div class="loader-logo gradient-text">boo</div>
+  <div class="loader-bar-wrap">
+    <div class="loader-bar"></div>
+  </div>
+  <p style="font-size:.75rem;color:var(--text-dim);letter-spacing:.12em;text-transform:uppercase;">Finding your match…</p>
+</div>
+
+<!-- Particles canvas (fixed background layer) -->
+<canvas id="particles"></canvas>
+
+<!-- Cursor spotlight -->
+<div class="cursor-glow" id="cursor-glow"></div>
+
+<!-- Read-progress bar -->
+<div id="read-progress"></div>
+
+<!-- ══════════════════════════════════════════════
+     NAVBAR
+════════════════════════════════════════════════ -->
+<nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
+  <div class="container">
+    <div class="nav-inner">
+      <!-- Logo -->
+      <a href="/" class="nav-logo">
+        <div class="logo-icon" aria-hidden="true">👻</div>
+        boo
+      </a>
+
+      <!-- Desktop links -->
+      <ul class="nav-links">
+        <li><a href="#how-it-works">How it works</a></li>
+        <li><a href="#personalities">Personalities</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#community">Community</a></li>
+      </ul>
+
+      <!-- Desktop CTAs -->
+      <div class="nav-cta">
+        <a href="#download" class="btn btn-ghost btn-sm">Log in</a>
+        <a href="#download"
+           class="btn btn-primary btn-sm"
+           data-toast="Opening the App Store… ✨"
+           data-toast-icon="📱">
+          Download Free
+        </a>
+      </div>
+
+      <!-- Hamburger -->
+      <button class="nav-hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile nav menu -->
+<div class="nav-mobile-menu" id="mobile-menu" role="menu">
+  <a href="#how-it-works" role="menuitem">How it works</a>
+  <a href="#personalities" role="menuitem">Personalities</a>
+  <a href="#features" role="menuitem">Features</a>
+  <a href="#community" role="menuitem">Community</a>
+  <a href="#download" role="menuitem" class="btn btn-primary" style="text-align:center;margin-top:8px"
+     data-toast="Opening the App Store… ✨">Download Free</a>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     HERO
+════════════════════════════════════════════════ -->
+<section class="hero" id="hero" aria-labelledby="hero-title">
+  <!-- Background orbs -->
+  <div class="hero-bg" aria-hidden="true">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+
+  <div class="container">
+    <div class="hero-inner">
+      <!-- Left: copy -->
+      <div class="hero-content">
+        <div class="hero-pre-badge">
+          <div class="dot" aria-hidden="true"></div>
+          <span class="badge badge-purple">✦ Personality-based matching</span>
+        </div>
+
+        <h1 class="hero-title" id="hero-title">
+          Find your<br />
+          <span class="gradient-text" data-text="perfect match">perfect match</span>
+        </h1>
+
+        <p class="hero-sub">
+          Connect with people who truly understand you — not just your photos.
+          Boo matches you based on personality, values, and what makes you <em>you</em>.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#personalities" class="btn btn-primary btn-lg">See how it works</a>
+          <a href="#community" class="btn btn-ghost btn-lg">Browse profiles</a>
+        </div>
+
+        <!-- App store links -->
+        <div class="app-links">
+          <a href="#download" class="app-btn"
+             data-toast="Redirecting to the App Store 🍎"
+             data-toast-icon="📱">
+            <span style="font-size:1.6rem">🍎</span>
+            <div class="app-btn-text">
+              <span class="app-btn-sub">Download on the</span>
+              <span class="app-btn-name">App Store</span>
+            </div>
+          </a>
+          <a href="#download" class="app-btn"
+             data-toast="Redirecting to Google Play 🤖"
+             data-toast-icon="📲">
+            <span style="font-size:1.6rem">▶️</span>
+            <div class="app-btn-text">
+              <span class="app-btn-sub">Get it on</span>
+              <span class="app-btn-name">Google Play</span>
+            </div>
+          </a>
+        </div>
+
+        <!-- Stats -->
+        <div class="hero-stats">
+          <div class="stat">
+            <span class="stat-num gradient-text">10M+</span>
+            <span class="stat-label">Members worldwide</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num gradient-text">4.8★</span>
+            <span class="stat-label">App Store rating</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num gradient-text">94%</span>
+            <span class="stat-label">Match accuracy</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: floating match cards -->
+      <div class="hero-visual" aria-hidden="true">
+        <!-- Card A – top center -->
+        <div class="match-card-wrap card-a">
+          <div class="match-card">
+            <div class="match-card-header">
+              <div class="avatar av-purple">🌌</div>
+              <div class="avatar-info">
+                <div class="avatar-name">Alex</div>
+                <div class="avatar-type">INFJ · The Advocate</div>
+              </div>
+            </div>
+            <div class="match-pct-row">
+              <span class="match-pct-label">Compatibility</span>
+              <span class="match-pct-val">96%</span>
+            </div>
+            <div class="match-bar-bg">
+              <div class="match-bar-fill" data-pct="96"></div>
+            </div>
+            <div class="match-tags">
+              <span class="tag">Insightful</span>
+              <span class="tag">Principled</span>
+              <span class="tag">Empathetic</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Heart connector -->
+        <div class="heart-connector">❤️</div>
+
+        <!-- Card B – bottom left -->
+        <div class="match-card-wrap card-b">
+          <div class="match-card">
+            <div class="match-card-header">
+              <div class="avatar av-pink">🎨</div>
+              <div class="avatar-info">
+                <div class="avatar-name">Sam</div>
+                <div class="avatar-type">ENFP · The Campaigner</div>
+              </div>
+            </div>
+            <div class="match-pct-row">
+              <span class="match-pct-label">Match</span>
+              <span class="match-pct-val">91%</span>
+            </div>
+            <div class="match-bar-bg">
+              <div class="match-bar-fill" data-pct="91"></div>
+            </div>
+            <div class="match-tags">
+              <span class="tag">Creative</span>
+              <span class="tag">Optimistic</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card C – bottom right -->
+        <div class="match-card-wrap card-c">
+          <div class="match-card">
+            <div class="match-card-header">
+              <div class="avatar av-teal">🔭</div>
+              <div class="avatar-info">
+                <div class="avatar-name">Jordan</div>
+                <div class="avatar-type">INTP · The Thinker</div>
+              </div>
+            </div>
+            <div class="match-pct-row">
+              <span class="match-pct-label">Match</span>
+              <span class="match-pct-val">88%</span>
+            </div>
+            <div class="match-bar-bg">
+              <div class="match-bar-fill" data-pct="88"></div>
+            </div>
+            <div class="match-tags">
+              <span class="tag">Analytical</span>
+              <span class="tag">Curious</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="scroll-indicator" aria-hidden="true">
+    <span>Scroll</span>
+    <div class="scroll-arrow"></div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     HOW IT WORKS
+════════════════════════════════════════════════ -->
+<section class="how-it-works" id="how-it-works" aria-labelledby="how-title">
+  <div class="container">
+    <div class="section-header">
+      <span class="badge badge-purple reveal">How it works</span>
+      <h2 class="section-title reveal reveal-delay-1" id="how-title">
+        Matching made <span class="gradient-text" data-text="meaningful">meaningful</span>
+      </h2>
+      <p class="section-sub reveal reveal-delay-2">
+        Three simple steps to find someone who truly gets you — no swiping mindlessly required.
+      </p>
+    </div>
+
+    <div class="steps-grid">
+      <!-- Step 1 -->
+      <div class="step-card reveal">
+        <div class="step-icon-wrap icon-purple">🧠</div>
+        <div class="step-num">01</div>
+        <h3 class="step-title">Discover your type</h3>
+        <p class="step-desc">
+          Take our personality assessment rooted in Jungian typology. Learn your 4-letter type, your core strengths, and how you show up in relationships.
+        </p>
+      </div>
+      <!-- Step 2 -->
+      <div class="step-card reveal reveal-delay-1">
+        <div class="step-icon-wrap icon-pink">💫</div>
+        <div class="step-num">02</div>
+        <h3 class="step-title">Get matched</h3>
+        <p class="step-desc">
+          Our algorithm surfaces compatible personalities using a multi-dimensional compatibility score — going far beyond surface-level interests.
+        </p>
+      </div>
+      <!-- Step 3 -->
+      <div class="step-card reveal reveal-delay-2">
+        <div class="step-icon-wrap icon-teal">🌱</div>
+        <div class="step-num">03</div>
+        <h3 class="step-title">Build something real</h3>
+        <p class="step-desc">
+          Guided conversation starters, shared value prompts, and compatibility insights help you create deep, meaningful connections from day one.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     PERSONALITY COMPATIBILITY
+════════════════════════════════════════════════ -->
+<section class="personality-section" id="personalities" aria-labelledby="pers-title">
+  <div class="container">
+    <div class="section-header">
+      <span class="badge badge-pink reveal">16 types</span>
+      <h2 class="section-title reveal reveal-delay-1" id="pers-title">
+        Who's your <span class="gradient-text" data-text="perfect match?">perfect match?</span>
+      </h2>
+      <p class="section-sub reveal reveal-delay-2">
+        Select your personality type below to instantly see your highest compatibility match, score, and what makes you two work.
+      </p>
+    </div>
+
+    <!-- Type buttons grid – populated by JS -->
+    <div id="compat-grid" class="compat-grid reveal" role="group" aria-label="Personality type selector"></div>
+
+    <!-- Compatibility result -->
+    <div id="compat-result" class="compat-result" aria-live="polite" aria-label="Compatibility result"></div>
+
+    <!-- Description box -->
+    <div class="compat-desc-box reveal" id="compat-desc" aria-live="polite"></div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     FEATURES
+════════════════════════════════════════════════ -->
+<section class="features-section" id="features" aria-labelledby="feat-title">
+  <div class="container">
+    <div class="section-header">
+      <span class="badge badge-purple reveal">Features</span>
+      <h2 class="section-title reveal reveal-delay-1" id="feat-title">
+        Everything you need to <span class="gradient-text" data-text="connect">connect</span>
+      </h2>
+      <p class="section-sub reveal reveal-delay-2">
+        Boo is built around science, authenticity, and the belief that the right connection changes everything.
+      </p>
+    </div>
+
+    <div class="features-grid">
+      <!-- Feature 1 -->
+      <div class="feature-card reveal">
+        <div class="feature-icon icon-purple">🧬</div>
+        <div class="feature-content">
+          <h3 class="feature-title">Deep personality matching</h3>
+          <p class="feature-desc">Our algorithm uses 16-type compatibility research, attachment styles, and love languages to surface truly compatible people — not just similar ones.</p>
+        </div>
+      </div>
+      <!-- Feature 2 -->
+      <div class="feature-card reveal reveal-delay-1">
+        <div class="feature-icon icon-pink">💬</div>
+        <div class="feature-content">
+          <h3 class="feature-title">Meaningful conversations</h3>
+          <p class="feature-desc">Spark real conversation with AI-powered prompts tailored to your personality match. Never stare at a blank text box again.</p>
+        </div>
+      </div>
+      <!-- Feature 3 -->
+      <div class="feature-card reveal reveal-delay-2">
+        <div class="feature-icon icon-teal">🌍</div>
+        <div class="feature-content">
+          <h3 class="feature-title">Global community</h3>
+          <p class="feature-desc">Meet personality types from over 150 countries. Filter by location, relationship goals, language, and more to find your people.</p>
+        </div>
+      </div>
+      <!-- Feature 4 -->
+      <div class="feature-card reveal reveal-delay-1">
+        <div class="feature-icon icon-purple">🔒</div>
+        <div class="feature-content">
+          <h3 class="feature-title">Safe &amp; private</h3>
+          <p class="feature-desc">Your data is yours. End-to-end encrypted messages, photo verification, and robust reporting tools keep the community safe and respectful.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     PROFILES CAROUSEL
+════════════════════════════════════════════════ -->
+<section id="community" aria-labelledby="community-title" style="padding-bottom:0">
+  <div class="container">
+    <div class="section-header">
+      <span class="badge badge-pink reveal">Community</span>
+      <h2 class="section-title reveal reveal-delay-1" id="community-title">
+        Your match is <span class="gradient-text" data-text="already here">already here</span>
+      </h2>
+      <p class="section-sub reveal reveal-delay-2">
+        Millions of authentic people — just like you — are waiting to connect.
+      </p>
+    </div>
+  </div>
+
+  <!-- Full-width scroll carousel -->
+  <div class="profiles-track-wrap">
+    <div class="profiles-track" id="profiles-track">
+
+      <div class="profile-card">
+        <div class="profile-pic av-purple" style="border-color:#7B5CFA;box-shadow:0 0 16px rgba(123,92,250,.4)">🌌</div>
+        <div class="profile-card-name">Maya</div>
+        <div class="profile-card-type">INFJ · Advocate</div>
+        <div class="profile-card-traits">
+          <span class="profile-card-trait">Insightful</span>
+          <span class="profile-card-trait">Compassionate</span>
+        </div>
+        <div class="profile-match-indicator"><div class="match-dot"></div> Active now</div>
+      </div>
+
+      <div class="profile-card">
+        <div class="profile-pic av-pink" style="border-color:#FF6B9D;box-shadow:0 0 16px rgba(255,107,157,.4)">🎨</div>
+        <div class="profile-card-name">Leo</div>
+        <div class="profile-card-type">ENFP · Campaigner</div>
+        <div class="profile-card-traits">
+          <span class="profile-card-trait">Creative</span>
+          <span class="profile-card-trait">Optimistic</span>
+        </div>
+        <div class="profile-match-indicator"><div class="match-dot"></div> Active now</div>
+      </div>
+
+      <div class="profile-card">
+        <div class="profile-pic av-teal" style="border-color:#4ECDC4;box-shadow:0 0 16px rgba(78,205,196,.4)">🔭</div>
+        <div class="profile-card-name">Jordan</div>
+        <div class="profile-card-type">INTP · Thinker</div>
+        <div class="profile-card-traits">
+          <span class="profile-card-trait">Analytical</span>
+          <span class="profile-card-trait">Curious</span>
+        </div>
+        <div class="profile-match-indicator"><div class="match-dot"></div> 2 min ago</div>
+      </div>
+
+      <div class="profile-card">
+        <div class="profile-pic av-orange" style="border-color:#FF9F43;box-shadow:0 0 16px rgba(255,159,67,.4)">🌟</div>
+        <div class="profile-card-name">Sofia</div>
+        <div class="profile-card-type">ENFJ · Protagonist</div>
+        <div class="profile-card-traits">
+          <span class="profile-card-trait">Charismatic</span>
+          <span class="profile-card-trait">Altruistic</span>
+        </div>
+        <div class="profile-match-indicator"><div class="match-dot"></div> Active now</div>
+      </div>
+
+      <div class="profile-card">
+        <div class="profile-pic av-green" style="border-color:#6BCB77;box-shadow:0 0 16px rgba(107,203,119,.4)">⚡</div>
+        <div class="profile-card-name">Kai</div>
+        <div class="profile-card-type">INTJ · Architect</div>
+        <div class="profile-card-traits">
+          <span class="profile-card-trait">Strategic</span>
+          <span class="profile-card-trait">Determined</span>
+        </div>
+        <div class="profile-match-indicator"><div class="match-dot"></div> 5 min ago</div>
+      </div>
+
+      <div class="profile-card">
+        <div class="profile-pic av-purple" style="border-color:#7B5CFA;box-shadow:0 0 16px rgba(123,92,250,.4)">💡</div>
+        <div class="profile-card-name">Riley</div>
+        <div class="profile-card-type">ENTP · Debater</div>
+        <div class="profile-card-traits">
+          <span class="profile-card-trait">Clever</span>
+          <span class="profile-card-trait">Energetic</span>
+        </div>
+        <div class="profile-match-indicator"><div class="match-dot"></div> Active now</div>
+      </div>
+
+      <div class="profile-card">
+        <div class="profile-pic av-pink" style="border-color:#FF6B9D;box-shadow:0 0 16px rgba(255,107,157,.4)">🌸</div>
+        <div class="profile-card-name">Zoe</div>
+        <div class="profile-card-type">INFP · Mediator</div>
+        <div class="profile-card-traits">
+          <span class="profile-card-trait">Empathetic</span>
+          <span class="profile-card-trait">Idealistic</span>
+        </div>
+        <div class="profile-match-indicator"><div class="match-dot"></div> Active now</div>
+      </div>
+
+      <div class="profile-card">
+        <div class="profile-pic av-teal" style="border-color:#4ECDC4;box-shadow:0 0 16px rgba(78,205,196,.4)">🔥</div>
+        <div class="profile-card-name">Marcus</div>
+        <div class="profile-card-type">ENTJ · Commander</div>
+        <div class="profile-card-traits">
+          <span class="profile-card-trait">Bold</span>
+          <span class="profile-card-trait">Efficient</span>
+        </div>
+        <div class="profile-match-indicator"><div class="match-dot"></div> 1 min ago</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     TESTIMONIALS
+════════════════════════════════════════════════ -->
+<section class="testimonials-section" aria-labelledby="test-title">
+  <div class="container">
+    <div class="section-header">
+      <span class="badge badge-purple reveal">Stories</span>
+      <h2 class="section-title reveal reveal-delay-1" id="test-title">
+        Real people, <span class="gradient-text" data-text="real connections">real connections</span>
+      </h2>
+      <p class="section-sub reveal reveal-delay-2">
+        Here's what happens when personality compatibility meets genuine human connection.
+      </p>
+    </div>
+
+    <div class="testimonials-grid">
+      <div class="testimonial-card reveal">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"I never believed in personality-based matching until Boo. My INFJ partner and I matched at 96% and now we've been together for 14 months. It's like we speak the same language."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar av-purple">🌌</div>
+          <div>
+            <div class="testimonial-name">Sarah K.</div>
+            <div class="testimonial-type">ENTP · New York</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card reveal reveal-delay-1">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"Boo matched me with my INTJ partner as an ENFP. Our compatibility score was 92%. Three months later we were long-distance but it didn't matter — we just click."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar av-pink">🎨</div>
+          <div>
+            <div class="testimonial-name">James L.</div>
+            <div class="testimonial-type">ENFP · London</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card reveal reveal-delay-2">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"I tried every dating app and nothing felt right. Then Boo matched me by type instead of just looks. Finally found someone who understands my need for depth."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar av-teal">🔭</div>
+          <div>
+            <div class="testimonial-name">Priya M.</div>
+            <div class="testimonial-type">INFJ · Toronto</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     DOWNLOAD CTA
+════════════════════════════════════════════════ -->
+<section class="cta-section" id="download" aria-labelledby="cta-title">
+  <div class="hero-bg" aria-hidden="true">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+  </div>
+  <div class="container">
+    <div class="cta-inner">
+      <span class="badge badge-pink reveal">Free to download</span>
+      <h2 class="cta-title reveal reveal-delay-1" id="cta-title">
+        Start your journey<br />
+        <span class="gradient-text" data-text="to a real connection">to a real connection</span>
+      </h2>
+      <p class="cta-sub reveal reveal-delay-2">
+        Join 10 million people who chose connection over chemistry. Download Boo — it's completely free.
+      </p>
+      <div class="store-badges reveal reveal-delay-2">
+        <a href="#" class="store-badge"
+           data-toast="Redirecting to the App Store 🍎"
+           data-toast-icon="📱">
+          <span class="store-badge-icon">🍎</span>
+          <div class="store-badge-text">
+            <span class="store-badge-sub">Download on the</span>
+            <span class="store-badge-name">App Store</span>
+          </div>
+        </a>
+        <a href="#" class="store-badge"
+           data-toast="Redirecting to Google Play 🤖"
+           data-toast-icon="📲">
+          <span class="store-badge-icon">▶️</span>
+          <div class="store-badge-text">
+            <span class="store-badge-sub">Get it on</span>
+            <span class="store-badge-name">Google Play</span>
+          </div>
+        </a>
+      </div>
+      <p class="reveal" style="font-size:.78rem;color:var(--text-dim);margin-top:8px">Available on iOS 14+ and Android 8+</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════════════ -->
+<footer role="contentinfo">
+  <div class="container">
+    <div class="footer-grid">
+      <!-- Brand column -->
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <div class="logo-icon" aria-hidden="true">👻</div>
+          boo
+        </div>
+        <p class="footer-tagline">The world's first personality-based social app for meeting new people and making friends.</p>
+        <div class="footer-socials" role="list" aria-label="Social media links">
+          <a href="#" class="social-icon" role="listitem" aria-label="Twitter">𝕏</a>
+          <a href="#" class="social-icon" role="listitem" aria-label="Instagram">📸</a>
+          <a href="#" class="social-icon" role="listitem" aria-label="TikTok">🎵</a>
+          <a href="#" class="social-icon" role="listitem" aria-label="YouTube">▶</a>
+        </div>
+      </div>
+
+      <!-- Links columns -->
+      <div>
+        <div class="footer-col-title">Product</div>
+        <nav class="footer-links" aria-label="Product links">
+          <a href="#how-it-works">How it works</a>
+          <a href="#personalities">Personalities</a>
+          <a href="#features">Features</a>
+          <a href="#download">Download</a>
+        </nav>
+      </div>
+
+      <div>
+        <div class="footer-col-title">Company</div>
+        <nav class="footer-links" aria-label="Company links">
+          <a href="#">About</a>
+          <a href="#">Blog</a>
+          <a href="#">Careers</a>
+          <a href="#">Press</a>
+        </nav>
+      </div>
+
+      <div>
+        <div class="footer-col-title">Support</div>
+        <nav class="footer-links" aria-label="Support links">
+          <a href="#">Help center</a>
+          <a href="#">Safety</a>
+          <a href="#">Community guidelines</a>
+          <a href="#">Contact us</a>
+        </nav>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2024 Boo Inc. All rights reserved.</p>
+      <div class="footer-legal">
+        <a href="#">Privacy policy</a>
+        <a href="#">Terms of service</a>
+        <a href="#">Cookie settings</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ══════════════════════════════════════════════
+     SCRIPTS
+════════════════════════════════════════════════ -->
+<script src="assets/js/main.js"></script>
+</body>
+</html>
